@@ -155,7 +155,7 @@ public abstract class Person
 
 ---
 
-3️⃣ Inheritance (การสืบทอดคลาส)
+ Inheritance (การสืบทอดคลาส)
 `Student` และ `Advisor` สืบทอด (`extends`) จาก `Person`
  ใช้ `base()` เพื่อเรียกคอนสตรักเตอร์ของคลาสแม่  
 ตัวอย่างในโค้ด
