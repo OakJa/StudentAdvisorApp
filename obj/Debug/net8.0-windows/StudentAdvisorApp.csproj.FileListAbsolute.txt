@@ -1,0 +1,16 @@
+C:\Users\moith\source\repos\StudentAdvisorApp\StudentAdvisorApp\obj\Debug\net8.0-windows\StudentAdvisorApp.Form1.resources
+C:\Users\moith\source\repos\StudentAdvisorApp\StudentAdvisorApp\obj\Debug\net8.0-windows\StudentAdvisorApp.csproj.GenerateResource.cache
+C:\Users\moith\source\repos\StudentAdvisorApp\StudentAdvisorApp\obj\Debug\net8.0-windows\StudentAdvisorApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\moith\source\repos\StudentAdvisorApp\StudentAdvisorApp\obj\Debug\net8.0-windows\StudentAdvisorApp.AssemblyInfoInputs.cache
+C:\Users\moith\source\repos\StudentAdvisorApp\StudentAdvisorApp\obj\Debug\net8.0-windows\StudentAdvisorApp.AssemblyInfo.cs
+C:\Users\moith\source\repos\StudentAdvisorApp\StudentAdvisorApp\obj\Debug\net8.0-windows\StudentAdvisorApp.csproj.CoreCompileInputs.cache
+C:\Users\moith\source\repos\StudentAdvisorApp\StudentAdvisorApp\bin\Debug\net8.0-windows\StudentAdvisorApp.exe
+C:\Users\moith\source\repos\StudentAdvisorApp\StudentAdvisorApp\bin\Debug\net8.0-windows\StudentAdvisorApp.deps.json
+C:\Users\moith\source\repos\StudentAdvisorApp\StudentAdvisorApp\bin\Debug\net8.0-windows\StudentAdvisorApp.runtimeconfig.json
+C:\Users\moith\source\repos\StudentAdvisorApp\StudentAdvisorApp\bin\Debug\net8.0-windows\StudentAdvisorApp.dll
+C:\Users\moith\source\repos\StudentAdvisorApp\StudentAdvisorApp\bin\Debug\net8.0-windows\StudentAdvisorApp.pdb
+C:\Users\moith\source\repos\StudentAdvisorApp\StudentAdvisorApp\obj\Debug\net8.0-windows\StudentAdvisorApp.dll
+C:\Users\moith\source\repos\StudentAdvisorApp\StudentAdvisorApp\obj\Debug\net8.0-windows\refint\StudentAdvisorApp.dll
+C:\Users\moith\source\repos\StudentAdvisorApp\StudentAdvisorApp\obj\Debug\net8.0-windows\StudentAdvisorApp.pdb
+C:\Users\moith\source\repos\StudentAdvisorApp\StudentAdvisorApp\obj\Debug\net8.0-windows\StudentAdvisorApp.genruntimeconfig.cache
+C:\Users\moith\source\repos\StudentAdvisorApp\StudentAdvisorApp\obj\Debug\net8.0-windows\ref\StudentAdvisorApp.dll
