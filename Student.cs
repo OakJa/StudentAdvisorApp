@@ -20,22 +20,15 @@ namespace StudentAdvisorApp
 
         public void SetAdvisor(Advisor advisor)
         {
-            if (this.Advisor == null)
+            if (Advisor == null)
             {
-                this.Advisor = advisor;
-                advisor.AddStudent(this);
-                Console.WriteLine($"Student {Name} assigned to Advisor {advisor.Name}");
-            }
-            else
-            {
-                Console.WriteLine($"Student {Name} already has an advisor: {this.Advisor.Name}");
+                Advisor = advisor;
             }
         }
 
         public override string GetInfo()
         {
-            string advisorName = (Advisor != null) ? Advisor.Name : "No Advisor";
-            return $"Student: {Name}, Major: {Major}, Grade: {Grade}, Advisor: {advisorName}";
+            return $"Student: {Name}, Major: {Major},   Grade: {Grade},  Advisor: {Advisor?.Name ?? "No Advisor"}" ;
         }
     }
 

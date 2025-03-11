@@ -28,11 +28,18 @@ namespace StudentAdvisorApp
             {
                 return "No students available";
             }
+            return students.OrderByDescending(s => s.Grade).First().GetInfo();
+        }
 
-            Student topStudent = students.OrderByDescending(s => s.Grade).First();
-            Console.WriteLine($"Top Student: {topStudent.GetInfo()}");
-
-            return topStudent.GetInfo();
+        public string GetTopAdvisor()
+        {
+            if (advisors.Count == 0)
+            {
+                return "No advisors available";
+            }
+            Advisor topAdvisor = advisors.OrderByDescending(a => a.GetStudents().Count).First();
+            Console.WriteLine($"Top Advisor: {topAdvisor.GetInfo()}");
+            return topAdvisor.GetInfo();
         }
 
         public List<Student> GetAllStudents()

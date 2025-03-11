@@ -15,3 +15,4 @@ C:\Users\moith\source\repos\StudentAdvisorApp\StudentAdvisorApp\obj\Debug\net8.0
 C:\Users\moith\source\repos\StudentAdvisorApp\StudentAdvisorApp\obj\Debug\net8.0-windows\StudentAdvisorApp.genruntimeconfig.cache
 C:\Users\moith\source\repos\StudentAdvisorApp\StudentAdvisorApp\obj\Debug\net8.0-windows\ref\StudentAdvisorApp.dll
 C:\Users\moith\source\repos\StudentAdvisorApp\StudentAdvisorApp\obj\Debug\net8.0-windows\StudentAdvisorApp.sourcelink.json
+C:\Users\moith\source\repos\StudentAdvisorApp\StudentAdvisorApp\obj\Debug\net8.0-windows\StudentAdvisorApp.Properties.Resources.resources

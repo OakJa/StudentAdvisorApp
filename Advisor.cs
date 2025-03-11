@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,12 +18,13 @@ namespace StudentAdvisorApp
         {
             if (student.Advisor == null)
             {
-                student.SetAdvisor(this); // กำหนดอาจารย์ที่ปรึกษาให้นักศึกษา
+                student.SetAdvisor(this);
                 students.Add(student);
+                Console.WriteLine($"Student {student.Name} assigned to Advisor {Name}");
             }
             else
             {
-                Console.WriteLine($"{student.Name} already has an advisor.");
+                Console.WriteLine($"Student {student.Name} already has an advisor: {student.Advisor.Name}");
             }
         }
 
@@ -32,12 +34,18 @@ namespace StudentAdvisorApp
             return students;
         }
 
+        // ✅ เพิ่มฟังก์ชันนี้ตรงนี้
+        public string GetStudentNames()
+        {
+            return students.Any()
+                ? string.Join(", ", students.Select(s => s.Name))
+                : "No students";
+        }
+
         public override string GetInfo()
         {
-            return $"Advisor: {Name}, Major: {Major}, Students Count: {students.Count}";
+            string studentNames = students.Count > 0 ? string.Join(", ", students.Select(s => s.Name)) : "No Students";
+            return $"Advisor: {Name}, Major: {Major}, Students Count: {students.Count}, Students: {studentNames}";
         }
     }
-
-
 }
-

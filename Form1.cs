@@ -6,13 +6,14 @@ namespace StudentAdvisorApp
         public Form1()
         {
             InitializeComponent();
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
-
+        //txtGrade
         private void btnAddStudent_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtStudentID.Text) ||
@@ -49,27 +50,23 @@ namespace StudentAdvisorApp
 
         private void btnAssignAdvisor_Click(object sender, EventArgs e)
         {
-            if (lstStudents.SelectedItem == null || lstAdvisors.SelectedItem == null)
+            if (cmbAdvisors.SelectedIndex >= 0 && lstStudents.SelectedIndex >= 0)
             {
-                MessageBox.Show("Please select both a student and an advisor.");
-                return;
-            }
+                Advisor selectedAdvisor = sms.GetAdvisorByIndex(cmbAdvisors.SelectedIndex);
+                Student selectedStudent = sms.GetStudentByIndex(lstStudents.SelectedIndex);
 
-            Student selectedStudent = sms.GetStudentByIndex(lstStudents.SelectedIndex);
-            Advisor selectedAdvisor = sms.GetAdvisorByIndex(lstAdvisors.SelectedIndex);
-
-            if (selectedStudent.Advisor == null)
-            {
-                selectedStudent.SetAdvisor(selectedAdvisor);
-                selectedAdvisor.AddStudent(selectedStudent);
-                MessageBox.Show("Advisor assigned successfully!");
+                if (selectedAdvisor != null && selectedStudent != null)
+                {
+                    selectedAdvisor.AddStudent(selectedStudent);
+                    selectedStudent.SetAdvisor(selectedAdvisor);
+                    MessageBox.Show($"{selectedStudent.Name} has been assigned to {selectedAdvisor.Name}");
+                }
             }
             else
             {
-                MessageBox.Show("This student already has an advisor!");
+                MessageBox.Show("Please select both an advisor and a student.");
             }
         }
-
         private void btnAddAdvisor_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtAdvisorID.Text) ||
@@ -88,8 +85,12 @@ namespace StudentAdvisorApp
             sms.AddAdvisor(advisor);
 
             lstAdvisors.Items.Add(advisor.GetInfo());
+            LoadAdvisorsToComboBox(); // โหลดข้อมูลที่ปรึกษาลง ComboBox
+
             MessageBox.Show("Advisor added successfully!");
         }
+
+
 
         private void cmbAdvisors_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -97,25 +98,34 @@ namespace StudentAdvisorApp
             {
                 Advisor selectedAdvisor = sms.GetAdvisorByIndex(cmbAdvisors.SelectedIndex);
 
-                if (selectedAdvisor != null)
-                {
-                    Console.WriteLine($"Selected Advisor: {selectedAdvisor.GetInfo()}");
+                lststudentsadvisor.Items.Clear();
 
-                    lstStudentsUnderAdvisor.Items.Clear();
-                    foreach (Student student in selectedAdvisor.GetStudents())
-                    {
-                        Console.WriteLine($"Student under advisor: {student.GetInfo()}");
-                        lstStudentsUnderAdvisor.Items.Add(student.GetInfo());
-                    }
-                }
-                else
+                List<Student> students = selectedAdvisor.GetStudents();
+                foreach (Student student in students)
                 {
-                    Console.WriteLine("No advisor found!");
+                    lststudentsadvisor.Items.Add(student.GetInfo());
                 }
+
+                if (students.Count == 0)
+                {
+                    lststudentsadvisor.Items.Add("No Students");
+                }
+            }
+
+        }
+
+
+        private void LoadAdvisorsToComboBox()
+        {
+            cmbAdvisors.Items.Clear();
+            foreach (Advisor advisor in sms.GetAllAdvisors())
+            {
+                cmbAdvisors.Items.Add(advisor.GetInfo());
             }
         }
 
-        private ListBox lstStudentsUnderAdvisor; 
+
+        private ListBox lstStudentsUnderAdvisor;
 
         private void label2_Click(object sender, EventArgs e)
         {
@@ -124,53 +134,104 @@ namespace StudentAdvisorApp
 
         private void btnShowTopStudent_Click_1(object sender, EventArgs e)
         {
-            Console.WriteLine($"Total students: {sms.GetAllStudents().Count}");
-
             string topStudentInfo = sms.GetTopStudent();
             MessageBox.Show(topStudentInfo, "Top Student");
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (lstAdvisors.SelectedItem == null)
+            if (cmbAdvisors.SelectedIndex == -1)
             {
-                MessageBox.Show("Please select an advisor.");
+                MessageBox.Show("Please select an advisor.", "Error");
                 return;
             }
 
-            Advisor selectedAdvisor = sms.GetAdvisorByIndex(lstAdvisors.SelectedIndex);
+            Advisor selectedAdvisor = sms.GetAdvisorByIndex(cmbAdvisors.SelectedIndex);
 
-            if (selectedAdvisor != null)
+            if (selectedAdvisor == null)
             {
-                if (lstStudentsUnderAdvisor != null)
+                MessageBox.Show("Advisor not found!", "Error");
+                return;
+            }
+
+            List<Student> students = selectedAdvisor.GetStudents();
+            string studentList = students.Count > 0
+                ? string.Join("\n", students.Select(s => s.GetInfo()))
+                : "No Students";
+
+            MessageBox.Show($"Advisor: {selectedAdvisor.Name}\nStudents:\n{studentList}", "Advisor's Students");
+        }
+
+
+
+
+        private void btnGetStudent_Click(object sender, EventArgs e)
+        {
+            if (lstStudents.SelectedIndex >= 0)
+            {
+                Student selectedStudent = sms.GetStudentByIndex(lstStudents.SelectedIndex);
+                if (selectedStudent != null)
                 {
-                    lstStudentsUnderAdvisor.Items.Clear(); // ล้างรายการก่อนหน้า
-
-                    List<Student> students = selectedAdvisor.GetStudents();
-
-                    if (students.Count > 0)
-                    {
-                        foreach (Student student in students)
-                        {
-                            lstStudentsUnderAdvisor.Items.Add(student.GetInfo());
-                        }
-                    }
-                    else
-                    {
-                        lstStudentsUnderAdvisor.Items.Add("No students under this advisor.");
-                    }
+                    MessageBox.Show(selectedStudent.GetInfo(), "Student Information");
                 }
                 else
                 {
-                    MessageBox.Show("Student list control is not initialized.");
+                    MessageBox.Show("No student found!");
                 }
             }
             else
             {
-                MessageBox.Show("No advisor found.");
+                MessageBox.Show("Please select a student from the list.");
             }
         }
 
+        private void lstAdvisors_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnShowAdvisors_Click(object sender, EventArgs e)
+        {
+            lstAdvisors.Items.Clear();
+            foreach (Advisor advisor in sms.GetAllAdvisors())
+            {
+                lstAdvisors.Items.Add(advisor.GetInfo());
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            lstAdvisors.Items.Clear();
+            foreach (Advisor advisor in sms.GetAllAdvisors())
+            {
+                lstAdvisors.Items.Add(advisor.GetInfo());
+            }
+        }
+
+        private void laststudents_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtAdvisorID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox5_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }
