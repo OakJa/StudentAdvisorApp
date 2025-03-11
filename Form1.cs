@@ -30,9 +30,9 @@ namespace StudentAdvisorApp
             string major = txtMajor.Text;
 
             double grade;
-            if (!double.TryParse(txtGrade.Text, out grade))
+            if (!double.TryParse(txtGrade.Text, out grade) || grade > 4.00)
             {
-                MessageBox.Show("Please enter a valid grade.");
+                MessageBox.Show("Please enter a valid grade not exceeding 4.00.");
                 return;
             }
 

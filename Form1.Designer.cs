@@ -57,6 +57,14 @@
             groupBox4 = new GroupBox();
             groupBox5 = new GroupBox();
             label8 = new Label();
+            label9 = new Label();
+            label10 = new Label();
+            label11 = new Label();
+            label12 = new Label();
+            label13 = new Label();
+            label14 = new Label();
+            label15 = new Label();
+            label16 = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -134,7 +142,7 @@
             cmbAdvisors.FormattingEnabled = true;
             cmbAdvisors.Location = new Point(11, 193);
             cmbAdvisors.Name = "cmbAdvisors";
-            cmbAdvisors.Size = new Size(151, 28);
+            cmbAdvisors.Size = new Size(141, 28);
             cmbAdvisors.TabIndex = 8;
             cmbAdvisors.SelectedIndexChanged += cmbAdvisors_SelectedIndexChanged;
             // 
@@ -304,10 +312,12 @@
             // groupBox3
             // 
             groupBox3.BackColor = SystemColors.AppWorkspace;
+            groupBox3.Controls.Add(label16);
+            groupBox3.Controls.Add(label15);
             groupBox3.Controls.Add(lstAdvisors);
             groupBox3.Controls.Add(cmbAdvisors);
             groupBox3.Controls.Add(btnShowTopStudent);
-            groupBox3.Location = new Point(448, 87);
+            groupBox3.Location = new Point(408, 87);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(342, 247);
             groupBox3.TabIndex = 25;
@@ -317,9 +327,10 @@
             // groupBox4
             // 
             groupBox4.BackColor = SystemColors.AppWorkspace;
+            groupBox4.Controls.Add(label14);
             groupBox4.Controls.Add(button1);
             groupBox4.Controls.Add(lstStudents);
-            groupBox4.Location = new Point(451, 348);
+            groupBox4.Location = new Point(411, 348);
             groupBox4.Name = "groupBox4";
             groupBox4.Size = new Size(339, 216);
             groupBox4.TabIndex = 26;
@@ -353,12 +364,94 @@
             label8.Text = "StudentAdvisorApp";
             label8.Click += label8_Click;
             // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Leelawadee UI", 9F, FontStyle.Bold);
+            label9.Location = new Point(756, 405);
+            label9.Name = "label9";
+            label9.Size = new Size(442, 20);
+            label9.TabIndex = 29;
+            label9.Text = "หากต้องการเลือกนักศึกษาเป็นที่ปรึกษาจำเป็นต้องเลือกในก่อนในช่อง";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Leelawadee UI", 9F, FontStyle.Bold);
+            label10.Location = new Point(756, 425);
+            label10.Name = "label10";
+            label10.Size = new Size(372, 20);
+            label10.TabIndex = 30;
+            label10.Text = "ข้างล่างของ showtop จึงจะเลือกนักศึกษาเป็นที่ปรึกษาได้";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Leelawadee UI", 9F, FontStyle.Bold);
+            label11.Location = new Point(756, 445);
+            label11.Name = "label11";
+            label11.Size = new Size(476, 20);
+            label11.TabIndex = 31;
+            label11.Text = "โดยจำเป็นต้องเพิ่มข้อมูลทั้งอาจารยืและนักศึกษาก่อนจึงจะสามารถเลือกได้";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Leelawadee UI", 9F, FontStyle.Bold);
+            label12.Location = new Point(756, 465);
+            label12.Name = "label12";
+            label12.Size = new Size(492, 20);
+            label12.TabIndex = 32;
+            label12.Text = "และเมื่อจะกดเพิ่มต้องชี้เมาสืไปที่ข้อมูลภายในช่องทั้งสองและกด asigAdvisor";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Leelawadee UI", 9F, FontStyle.Bold);
+            label13.Location = new Point(756, 485);
+            label13.Name = "label13";
+            label13.Size = new Size(426, 20);
+            label13.TabIndex = 33;
+            label13.Text = "เมื่อเสร็จแล้วให้กดรายชื่ออาจารย์ในช่องข้างล่าง showtopอีกครั้ง ";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(108, 167);
+            label14.Name = "label14";
+            label14.Size = new Size(205, 20);
+            label14.TabIndex = 34;
+            label14.Text = "กดตรงนี้เพื่อดูนักศึกษาในที่ปรึกษา";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(111, 162);
+            label15.Name = "label15";
+            label15.Size = new Size(147, 20);
+            label15.TabIndex = 35;
+            label15.Text = "กดตรงนี้เพื่อดูเกรดสูงสุด";
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(160, 196);
+            label16.Name = "label16";
+            label16.Size = new Size(182, 20);
+            label16.TabIndex = 36;
+            label16.Text = "กดตรงนี้เพื่อดูอาจารย์ที่ปรึกษา\r\n";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(1254, 573);
+            Controls.Add(label13);
+            Controls.Add(label12);
+            Controls.Add(label11);
+            Controls.Add(label10);
+            Controls.Add(label9);
             Controls.Add(label8);
             Controls.Add(groupBox5);
             Controls.Add(groupBox4);
@@ -373,7 +466,9 @@
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
             groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
             groupBox5.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -410,5 +505,13 @@
         private GroupBox groupBox4;
         private GroupBox groupBox5;
         private Label label8;
+        private Label label9;
+        private Label label10;
+        private Label label11;
+        private Label label12;
+        private Label label16;
+        private Label label15;
+        private Label label14;
+        private Label label13;
     }
 }
