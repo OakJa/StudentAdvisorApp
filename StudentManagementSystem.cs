@@ -28,7 +28,11 @@ namespace StudentAdvisorApp
             {
                 return "No students available";
             }
-            return students.OrderByDescending(s => s.Grade).First().GetInfo();
+
+            Student topStudent = students.OrderByDescending(s => s.Grade).First();
+            Console.WriteLine($"Top Student: {topStudent.GetInfo()}");
+
+            return topStudent.GetInfo();
         }
 
         public List<Student> GetAllStudents()
@@ -40,6 +44,23 @@ namespace StudentAdvisorApp
         {
             return advisors;
         }
+
+        public Student GetStudentByIndex(int index)
+        {
+            if (index >= 0 && index < students.Count)
+            {
+                return students[index];
+            }
+            return null;
+        }
+
+        public Advisor GetAdvisorByIndex(int index)
+        {
+            if (index >= 0 && index < advisors.Count)
+            {
+                return advisors[index];
+            }
+            return null;
+        }
     }
 }
-

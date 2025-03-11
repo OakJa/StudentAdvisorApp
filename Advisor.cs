@@ -15,11 +15,20 @@ namespace StudentAdvisorApp
 
         public void AddStudent(Student student)
         {
-            students.Add(student);
+            if (student.Advisor == null)
+            {
+                student.SetAdvisor(this); // กำหนดอาจารย์ที่ปรึกษาให้นักศึกษา
+                students.Add(student);
+            }
+            else
+            {
+                Console.WriteLine($"{student.Name} already has an advisor.");
+            }
         }
 
         public List<Student> GetStudents()
         {
+            Console.WriteLine($"Advisor {Name} has {students.Count} students.");
             return students;
         }
 

@@ -20,14 +20,15 @@ namespace StudentAdvisorApp
 
         public void SetAdvisor(Advisor advisor)
         {
-            if (Advisor == null) // นักศึกษามีอาจารย์ที่ปรึกษาได้เพียงหนึ่งคน
+            if (this.Advisor == null)
             {
-                Advisor = advisor;
+                this.Advisor = advisor;
                 advisor.AddStudent(this);
+                Console.WriteLine($"Student {Name} assigned to Advisor {advisor.Name}");
             }
             else
             {
-                throw new InvalidOperationException("This student already has an advisor.");
+                Console.WriteLine($"Student {Name} already has an advisor: {this.Advisor.Name}");
             }
         }
 
