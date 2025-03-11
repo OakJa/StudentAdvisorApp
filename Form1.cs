@@ -15,19 +15,31 @@ namespace StudentAdvisorApp
 
         private void btnAddStudent_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtStudentID.Text) ||
+                string.IsNullOrWhiteSpace(txtStudentName.Text) ||
+                string.IsNullOrWhiteSpace(txtMajor.Text) ||
+                string.IsNullOrWhiteSpace(txtGrade.Text))
+            {
+                MessageBox.Show("Please fill in all fields.");
+                return;
+            }
+
             string id = txtStudentID.Text;
             string name = txtStudentName.Text;
             string major = txtMajor.Text;
 
-            double grade = double.Parse(txtGrade.Text);
+            double grade;
+            if (!double.TryParse(txtGrade.Text, out grade))
+            {
+                MessageBox.Show("Please enter a valid grade.");
+                return;
+            }
 
             Student student = new Student(id, name, major, grade);
             sms.AddStudent(student);
 
             lstStudents.Items.Add(student.GetInfo());
             MessageBox.Show("Student added successfully!");
-
-
         }
 
         private void btnShowTopStudent_Click(object sender, EventArgs e)
@@ -49,6 +61,7 @@ namespace StudentAdvisorApp
             if (selectedStudent.Advisor == null)
             {
                 selectedStudent.SetAdvisor(selectedAdvisor);
+                selectedAdvisor.AddStudent(selectedStudent);
                 MessageBox.Show("Advisor assigned successfully!");
             }
             else
@@ -59,6 +72,14 @@ namespace StudentAdvisorApp
 
         private void btnAddAdvisor_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtAdvisorID.Text) ||
+                string.IsNullOrWhiteSpace(txtAdvisorName.Text) ||
+                string.IsNullOrWhiteSpace(txtAdvisorMajor.Text))
+            {
+                MessageBox.Show("Please fill in all fields.");
+                return;
+            }
+
             string id = txtAdvisorID.Text;
             string name = txtAdvisorName.Text;
             string major = txtAdvisorMajor.Text;
@@ -78,23 +99,23 @@ namespace StudentAdvisorApp
 
                 if (selectedAdvisor != null)
                 {
-                    Console.WriteLine($"Selected Advisor: {selectedAdvisor.GetInfo()}"); // ตรวจสอบว่ามีอาจารย์ที่ปรึกษา
+                    Console.WriteLine($"Selected Advisor: {selectedAdvisor.GetInfo()}");
 
                     lstStudentsUnderAdvisor.Items.Clear();
                     foreach (Student student in selectedAdvisor.GetStudents())
                     {
-                        Console.WriteLine($"Student under advisor: {student.GetInfo()}"); // ตรวจสอบนักศึกษา
+                        Console.WriteLine($"Student under advisor: {student.GetInfo()}");
                         lstStudentsUnderAdvisor.Items.Add(student.GetInfo());
                     }
                 }
                 else
                 {
-                    Console.WriteLine("No advisor found!"); // กรณีไม่มีอาจารย์ที่ปรึกษา
+                    Console.WriteLine("No advisor found!");
                 }
             }
         }
 
-        private ListBox lstStudentsUnderAdvisor; // Add this line to declare lstStudentsUnderAdvisor
+        private ListBox lstStudentsUnderAdvisor; 
 
         private void label2_Click(object sender, EventArgs e)
         {
